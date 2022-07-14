@@ -243,7 +243,7 @@ namespace MISA.WebDev2022.Api.Controllers
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         public IActionResult FilterEmployees([FromQuery] string? code, [FromQuery] string? name, [FromQuery] string? phoneNumber,
-            [FromQuery] Guid? positionID, [FromQuery] Guid? departmentID, [FromQuery] int limit = -1, [FromQuery] int skip = -1)
+            [FromQuery] Guid? positionID, [FromQuery] Guid? departmentID, [FromQuery] int includeDepartment, [FromQuery] int includePosition, [FromQuery] int limit = -1, [FromQuery] int skip = -1)
         {
             try
             {
@@ -256,6 +256,15 @@ namespace MISA.WebDev2022.Api.Controllers
 
                 string countCommand = "SELECT COUNT(*) as count FROM Employees";
                 string getEmployeeCommand = "SELECT * FROM Employees ";
+                if(includeDepartment == 1)
+                {
+                    getEmployeeCommand += " JOIN Departments ON Departments.DepartmentID = Employees.DepartmentID ";
+
+                }
+                if(includePosition == 1)
+                {
+                    getEmployeeCommand += " JOIN Positions ON Positions.PositionId = Employees.PositionId ";
+                }
 
                 var whereConditions = new List<string>();
                 if (code != null)
@@ -272,11 +281,11 @@ namespace MISA.WebDev2022.Api.Controllers
                 }
                 if (positionID != null)
                 {
-                    whereConditions.Add($"PositionID LIKE '%{positionID}%'");
+                    whereConditions.Add($"Employees.PositionID LIKE '%{positionID}%'");
                 }
                 if (departmentID != null)
                 {
-                    whereConditions.Add($"DepartmentID LIKE '%{departmentID}%'");
+                    whereConditions.Add($"Employees.DepartmentID LIKE '%{departmentID}%'");
                 }
                 string whereClause = string.Join(" AND ", whereConditions);
                 if(whereClause.Length > 0)

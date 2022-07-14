@@ -27,7 +27,7 @@ namespace MISA.WebDev2022.Api.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị câu lệnh truy vấn
-                string getAllPositionsCommand = "SELECT * FROM positions;";
+                string getAllPositionsCommand = "SELECT * FROM Positions;";
 
                 // Thực hiện gọi vào DB để chạy câu lệnh truy vấn ở trên
                 var positions = mySqlConnection.Query<Position>(getAllPositionsCommand);
