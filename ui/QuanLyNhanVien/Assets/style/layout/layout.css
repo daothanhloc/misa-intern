@@ -1,0 +1,88 @@
+@import url(./content/content.css);
+@import url(./header/header.css);
+@import url(./sidebar/sidebar.css);
+@import url(./form/form.css);
+@import url(./messenger/messenger.css);
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}
+
+.container .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #fff;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-bottom: 1px solid #bbbbbb;
+  z-index: 1;
+}
+
+.container .sidebar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  height: calc(100% - 50px);
+  width: 200px;
+  border-right: 1px solid #bbb;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.container .content {
+  position: fixed;
+  width: calc(100% - 200px);
+  height: calc(100% - 50px);
+  top: 50px;
+  left: 200px;
+  z-index: 0;
+  overflow: auto;
+}
+
+.sub-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(167, 166, 166, 0.5);
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toast-messenger {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+/*# sourceMappingURL=layout.css.map */

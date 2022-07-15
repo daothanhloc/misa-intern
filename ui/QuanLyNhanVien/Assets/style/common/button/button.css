@@ -1,0 +1,146 @@
+.hn-btn {
+  background-color: #019160;
+  border-radius: 4px;
+  height: 40px;
+  min-width: 100px;
+  padding: 0 24px 0 44px;
+  text-align: center;
+  border: none;
+  color: #fff;
+}
+
+.hn-btn:hover {
+  background-color: #2fbe8e;
+  cursor: pointer;
+}
+
+.hn-btn:active {
+  background-color: #01b075;
+}
+
+.hn-btn-2 {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  margin-left: 4px;
+  background-color: #e5e5e5;
+}
+
+.hn-btn-2:hover {
+  cursor: pointer;
+  background-color: #bebebe;
+}
+
+.delete-btn {
+  background-image: url(../../../assets/icon/delete.png);
+  background-size: 20px 20px !important;
+  background-position: 9px 9px;
+}
+
+.replication-btn {
+  background-image: url(../../../assets/icon/duplicate.png);
+  background-size: 40px 40px !important;
+  background-position: 0px -1px;
+}
+
+.refresh-btn {
+  background-image: url(../../../assets/icon/refresh.png);
+  background-size: 20px 20px !important;
+  background-position: 9px 9px;
+}
+
+.hn-add-btn {
+  background-image: url(../../../assets/icon/add.png);
+  background-size: 20px 20px !important;
+  background-position: 16px 9px;
+}
+
+.cancel-btn {
+  padding: 0 24px !important;
+  background-color: #e7e7e7;
+  margin-right: 16px;
+  color: #000;
+}
+
+.cancel-btn:hover {
+  background-color: #c9c9c9 !important;
+}
+
+.save-btn {
+  background-image: url(../../../assets/icon/save-32.png);
+  background-size: 20px 20px !important;
+  background-position: 16px 9px;
+}
+
+.delete-btn2 {
+  background-color: #ff4747;
+  padding-left: 24px;
+}
+
+.delete-btn2:hover {
+  background-color: #ff5959;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0 4px 0 4px;
+}
+
+.close-btn:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.close-btn i {
+  font-size: 24px;
+}
+
+.close-btn-2 {
+  width: 32px;
+  height: 32px;
+}
+
+.close-btn-2 i {
+  font-size: 16px;
+}
+
+.close-btn-3 {
+  width: 24px;
+  height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.close-btn-3:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  cursor: pointer;
+}
+
+.close-btn-3 i {
+  font-size: 20px;
+}
+/*# sourceMappingURL=button.css.map */

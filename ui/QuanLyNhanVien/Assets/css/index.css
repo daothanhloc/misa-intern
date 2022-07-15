@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Google Sans";
+  src: url("../font/GoogleSans-Medium.otf"), ("../font/GoogleSans-Bold.otf"),
+    ("../font/GoogleSans-Regular.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}

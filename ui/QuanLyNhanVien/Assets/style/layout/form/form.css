@@ -1,0 +1,183 @@
+.form {
+  max-height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 4px;
+  position: relative;
+}
+
+.form::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background-color: #019160;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+}
+
+.form::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+.form .form__header {
+  margin: 24px 56px 24px 16px;
+}
+
+.form .form__header-2 {
+  margin-left: 24px;
+}
+
+.form .form__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 16px;
+}
+
+.form .form__body .image {
+  width: 210px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form .form__body .image label img {
+  width: 170px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.form .form__body .image #avatar {
+  display: none;
+}
+
+.form .form__body .image p {
+  text-align: center;
+  width: 155px;
+}
+
+.form .form__body .form__body--content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form .form__body .form__body--content .content-information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form .form__body .form__body--content .content-information .border-bottom {
+  width: 100px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 5px solid #019160;
+}
+
+.form .form__body .form__body--content .content-information .form-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 12px;
+}
+
+.form .form__body .form__body--content .content-information .form-row .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form .form__body .form__body--content .content-information .form-row .form-group label {
+  margin-bottom: 4px;
+}
+
+.form .form__body .form__body--content .content-information .form-row .form-group label span {
+  color: red;
+}
+
+.form .form__body .form-content {
+  width: 450px;
+  margin: 0 8px 24px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form .form__body .form-content .warning {
+  width: 48px;
+  height: 44px;
+  background-image: url(../../../assets/icon/warning.png);
+  background-size: 28px 28px;
+  background-position: 7px 6px;
+  background-color: #ededed;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.form .form__body .form-content .content {
+  width: 100%;
+}
+
+.form .form__body .form-content .content p {
+  font-size: 14px;
+}
+
+.form .form__body .form-content .content input {
+  width: 100%;
+  border: none;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form .form-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: #e7e7e7;
+  padding: 0 24px;
+}
+/*# sourceMappingURL=form.css.map */

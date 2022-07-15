@@ -1,0 +1,88 @@
+.header__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__left .header__left--logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__left .header__left--logo .header-menu {
+  background-image: url(../../../assets/img/toggle.png);
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+
+.header__left .header__left--logo .header-logo {
+  background-image: url(../../../assets/img/cukcuk-logo.png);
+  height: 32px;
+  width: 125px;
+}
+
+.header__left .header__left--select {
+  margin-left: 24px;
+}
+
+.header__left .header__left--select select {
+  border-radius: 4px;
+  height: 24px;
+  border: none;
+  padding-right: 10px;
+  outline: #019160;
+}
+
+.header__left .header__left--select select:hover {
+  border: 1px solid #019160;
+}
+
+.header__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__right .notification {
+  width: 24px;
+  height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header__right .notification i {
+  font-size: 16px;
+}
+
+.header__right .user-avatar {
+  background-image: url(../../../assets/icon/avatar-default.png);
+  width: 32px;
+  height: 32px;
+  margin: 0 16px;
+}
+
+.header__right .more-btn {
+  background-image: url(../../../assets/icon/option.png);
+  width: 16px;
+  height: 16px;
+  margin-left: 16px;
+}
+/*# sourceMappingURL=header.css.map */

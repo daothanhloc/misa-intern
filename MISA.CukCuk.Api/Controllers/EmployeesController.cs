@@ -29,7 +29,7 @@ namespace MISA.WebDev2022.Api.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị câu lệnh INSERT INTO
-                string insertEmployeeCommand = "INSERT INTO employee (EmployeeID, EmployeeCode, EmployeeName, DateOfBirth, Gender, IdentityNumber, IdentityIssuedPlace, IdentityIssuedDate, Email, PhoneNumber, PositionID, DepartmentID, TaxCode, Salary, JoiningDate, WorkStatus, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) " +
+                string insertEmployeeCommand = "INSERT INTO Employees (EmployeeID, EmployeeCode, EmployeeName, DateOfBirth, Gender, IdentityNumber, IdentityIssuedPlace, IdentityIssuedDate, Email, PhoneNumber, PositionID, DepartmentID, TaxCode, Salary, JoiningDate, WorkStatus, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) " +
                     "VALUES (@EmployeeID, @EmployeeCode, @EmployeeName, @DateOfBirth, @Gender, @IdentityNumber, @IdentityIssuedPlace, @IdentityIssuedDate, @Email, @PhoneNumber, @PositionID, @DepartmentID, @TaxCode, @Salary, @JoiningDate, @WorkStatus, @CreatedDate, @CreatedBy, @ModifiedDate, @ModifiedBy);";
 
                 // Chuẩn bị tham số đầu vào cho câu lệnh INSERT INTO
@@ -106,7 +106,7 @@ namespace MISA.WebDev2022.Api.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị câu lệnh UPDATE
-                string updateEmployeeCommand = "UPDATE employee " +
+                string updateEmployeeCommand = "UPDATE Employees " +
                     "SET EmployeeCode = @EmployeeCode, " +
                     "EmployeeName = @EmployeeName, " +
                     "DateOfBirth = @DateOfBirth, " +
@@ -197,7 +197,7 @@ namespace MISA.WebDev2022.Api.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị câu lệnh DELETE
-                string deleteEmployeeCommand = "DELETE FROM employee WHERE EmployeeID = @EmployeeID";
+                string deleteEmployeeCommand = "DELETE FROM Employees WHERE EmployeeID = @EmployeeID";
 
                 // Chuẩn bị tham số đầu vào cho câu lệnh DELETE
                 var parameters = new DynamicParameters();
@@ -395,15 +395,20 @@ namespace MISA.WebDev2022.Api.Controllers
                 var mySqlConnection = new MySqlConnection(connectionString);
 
                 // Chuẩn bị tên stored procedure
-                string storedProcedureName = "Proc_Employee_GetMaxCode";
+                string command = "SELECT MAX(EmployeeCode) FROM Employees";
+                var maxCode = mySqlConnection.QueryFirstOrDefault<string>(command);
+                Console.WriteLine(maxCode);
+                Console.WriteLine((Int64.Parse(maxCode.Substring(2)) + 1));
+
+               
 
                 // Thực hiện gọi vào DB để chạy stored procedure ở trên
-                string maxEmployeeCode = mySqlConnection.QueryFirstOrDefault<string>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure);
+                //string maxEmployeeCode = mySqlConnection.QueryFirstOrDefault<string>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure);
 
                 // Xử lý sinh mã nhân viên mới tự động tăng
                 // Cắt chuỗi mã nhân viên lớn nhất trong hệ thống để lấy phần số
                 // Mã nhân viên mới = "NV" + Giá trị cắt chuỗi ở  trên + 1
-                string newEmployeeCode = "NV" + (Int64.Parse(maxEmployeeCode.Substring(2)) + 1).ToString();
+                string newEmployeeCode = "NV" + (Int64.Parse(maxCode.Substring(2)) -1).ToString();
 
                 // Trả về dữ liệu cho client
                 return StatusCode(StatusCodes.Status200OK, newEmployeeCode);

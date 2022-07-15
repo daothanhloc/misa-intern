@@ -1,0 +1,55 @@
+.toast-messenger .messenger {
+  height: 48px;
+  width: 300px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  background-position: 12px 12px;
+  background-size: 24px;
+  margin: 8px;
+  padding: 0px 12px 0 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.toast-messenger .danger-mes {
+  background-image: url(../../../assets/icon/warning.png);
+}
+
+.toast-messenger .danger-mes .close-btn-3 i {
+  color: #ffcece;
+}
+
+.toast-messenger .warning-mes {
+  background-image: url(../../../assets/icon/warning.png);
+}
+
+.toast-messenger .warning-mes .close-btn-3 i {
+  color: #ffe7af;
+}
+
+.toast-messenger .success-mes {
+  background-image: url(../../../assets/icon/warning.png);
+}
+
+.toast-messenger .success-mes .close-btn-3 i {
+  color: #baffe7;
+}
+
+.toast-messenger .info-mes {
+  background-image: url(../../../assets/icon/warning.png);
+}
+
+.toast-messenger .info-mes .close-btn-3 i {
+  color: #d8eaff;
+}
+/*# sourceMappingURL=messenger.css.map */
