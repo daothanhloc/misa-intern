@@ -242,8 +242,12 @@ namespace MISA.WebDev2022.Api.Controllers
         [SwaggerResponse(StatusCodes.Status200OK, type: typeof(List<Employee>))]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
-        public IActionResult FilterEmployees([FromQuery] string? code, [FromQuery] string? name, [FromQuery] string? phoneNumber,
-            [FromQuery] Guid? positionID, [FromQuery] Guid? departmentID, [FromQuery] int includeDepartment, [FromQuery] int includePosition, [FromQuery] int limit = -1, [FromQuery] int skip = -1)
+        public IActionResult FilterEmployees([FromQuery] string? search, [FromQuery] Guid? positionID,
+            [FromQuery] Guid? departmentID,
+            [FromQuery] int includeDepartment,
+            [FromQuery] int includePosition,
+            [FromQuery] int limit = -1,
+            [FromQuery] int skip = -1)
         {
             try
             {
@@ -267,28 +271,21 @@ namespace MISA.WebDev2022.Api.Controllers
                 }
 
                 var whereConditions = new List<string>();
-                if (code != null)
+
+                if (search != null)
                 {
-                    whereConditions.Add($"EmployeeCode LIKE '%{code}%'");
-                }
-                if (name != null)
-                {
-                    whereConditions.Add($"EmployeeName LIKE '%{name}%'");
-                }
-                if (phoneNumber != null)
-                {
-                    whereConditions.Add($"PhoneNumber LIKE '%{phoneNumber}%'");
+                    whereConditions.Add($"(EmployeeCode LIKE '%{search}%' OR EmployeeName LIKE '%{search}%' OR PhoneNumber LIKE '%{search}%')");
                 }
                 if (positionID != null)
                 {
-                    whereConditions.Add($"Employees.PositionID LIKE '%{positionID}%'");
+                    whereConditions.Add($"Employees.PositionID = '{positionID}'");
                 }
                 if (departmentID != null)
                 {
-                    whereConditions.Add($"Employees.DepartmentID LIKE '%{departmentID}%'");
+                    whereConditions.Add($"Employees.DepartmentID = '{departmentID}'");
                 }
                 string whereClause = string.Join(" AND ", whereConditions);
-                if(whereClause.Length > 0)
+                if (whereClause.Length > 0)
                 {
                     getEmployeeCommand += " WHERE " + whereClause;
                     countCommand += " WHERE " + whereClause;
