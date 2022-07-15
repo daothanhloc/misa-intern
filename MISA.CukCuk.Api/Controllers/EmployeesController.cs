@@ -349,15 +349,16 @@ namespace MISA.WebDev2022.Api.Controllers
                 string connectionString = "Server=3.0.89.182;Port=3306;Database=WDT.2022.DTLOC;Uid=dev;Pwd=12345678;";
                 var mySqlConnection = new MySqlConnection(connectionString);
 
-                // Chuẩn bị tên Stored procedure
-                string storedProcedureName = "Proc_Employee_GetByEmployeeID";
+                var command = "SELECT * FROM Employees WHERE EmployeeID = '" + employeeID + "'";
+
 
                 // Chuẩn bị tham số đầu vào cho stored procedure
                 var parameters = new DynamicParameters();
                 parameters.Add("@$EmployeeID", employeeID);
 
                 // Thực hiện gọi vào DB để chạy stored procedure với tham số đầu vào ở trên
-                var employee = mySqlConnection.QueryFirstOrDefault<Employee>(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                var employee = mySqlConnection.QueryFirstOrDefault<Employee>(command);
+                Console.WriteLine(employee);
 
                 // Xử lý kết quả trả về từ DB
                 if (employee != null)
