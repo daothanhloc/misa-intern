@@ -8,7 +8,6 @@ class EmployeeDetail {
 
   /**
    * Khởi tạo sự kiện cho form
-   * LHNAM (6/7/2022)
    */
   initEvents() {
     let me = this;
@@ -53,7 +52,6 @@ class EmployeeDetail {
 
   /**
    * Đóng form
-   * LHNAM (6/7/2022)
    */
   close() {
     let me = this;
@@ -63,7 +61,6 @@ class EmployeeDetail {
 
   /**
    * Lưu dữ liệu
-   * LHNAM (6/7/2022)
    */
   save() {
     let me = this,
@@ -79,7 +76,6 @@ class EmployeeDetail {
 
   /**
    * Hàm xóa dữ liệu
-   * LHNAM (13/7/2022)
    */
   delete() {
     let me = this,
@@ -115,7 +111,6 @@ class EmployeeDetail {
 
   /**
    * Validate required
-   * LHNAM(6/7/2022)
    */
   validateRequire() {
     let me = this,
@@ -140,7 +135,6 @@ class EmployeeDetail {
 
   /**
    * Hàm đẩy dữ liệu data
-   * LHNAM(6/7/2022)
    */
   saveData(data) {
     let me = this,
@@ -180,7 +174,6 @@ class EmployeeDetail {
 
   /**
    * Hàm nhận kết quả từ ajax
-   * LHNAM(12/7/2022)
    */
   getResult(res) {
     let me = this;
@@ -190,7 +183,6 @@ class EmployeeDetail {
 
   /**
    * Hàm lấy dữ liệu từ form
-   * LHNAM (6/7/2022)
    */
   getFormData() {
     let me = this,
@@ -228,7 +220,6 @@ class EmployeeDetail {
 
   /**
    * Hàm mở form
-   * LHNAM (6/7/2022)/
    */
 
   open(param) {
@@ -265,7 +256,6 @@ class EmployeeDetail {
 
   /**
    * Hàm tự động điền thông tin của người dùng lên form
-   * LHNAM (7/7/2022)
    */
   formAutoFill(param) {
     let me = this,
@@ -307,7 +297,6 @@ class EmployeeDetail {
 
   /**
    * Hàm reset form
-   * LHNAM(6/7/2022)
    */
   resetForm(param) {
     let me = this;

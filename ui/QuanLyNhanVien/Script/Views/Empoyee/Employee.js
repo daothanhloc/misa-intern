@@ -59,7 +59,6 @@ class EmployeePage {
 
   /**
    * Dùng để khởi tạo các sự kiện cho trang
-   * NTXUAN (01.07.2022)
    */
   initEvents() {
     let me = this;
@@ -124,7 +123,6 @@ class EmployeePage {
 
   /**
    * Hàm khởi tạo sự kiện cho bộ lọc và tìm kiếm
-   * LHNAM (13/7/2022)
    */
   initEventsFilter() {
     let me = this;
@@ -140,7 +138,6 @@ class EmployeePage {
   }
   /**
    * Hàm khởi tạo sự kiện tìm kiếm
-   * LHNAM (13/7/2022)
    */
   searchFilter() {
     let me = this;
@@ -156,7 +153,6 @@ class EmployeePage {
 
   /**
    * Hàm khởi tạo sự kiện bộ lọc vị trí
-   * LHNAM (13/7/2022)
    */
   positionFilter() {
     let me = this;
@@ -171,7 +167,6 @@ class EmployeePage {
 
   /**
    * Hàm khởi tạo sự kiện bộ lọc phòng ban
-   * LHNAM (13/7/2022)
    */
   departmentFilter() {
     let me = this;
@@ -293,7 +288,6 @@ class EmployeePage {
 
   /**
    * Khởi tạo trang detail
-   * NTXUAN (04.07.2022)
    */
   initFormDetail() {
     let me = this;
@@ -458,9 +452,6 @@ class EmployeePage {
 
           tr.append(td);
         });
-
-        // tr.data("Xuan", item);
-
         tbody.append(tr);
       });
     }
@@ -503,7 +494,6 @@ class EmployeePage {
 
   /**
    * Hàm để set giá trị cho cột workStatus
-   * LHNAM (12/7/2022)
    */
   setWorkStatus(workStatus) {
     switch (workStatus) {
@@ -529,7 +519,6 @@ class EmployeePage {
 
   /**
    * Hàm để set giá trị cho cột giới tính
-   * LHNAM(3/7/2022)
    */
   setGender(gender) {
     switch (gender) {
@@ -547,7 +536,6 @@ class EmployeePage {
   }
   /**
    * Hàm dùng để lấy class format cho từng kiểu dữ liệu
-   * CreatedBy: NTXUAN 06.05.2021
    */
   getClassFormat(dataType) {
     let className = "";
@@ -661,7 +649,6 @@ class EmployeePage {
 
   /**
    * Hàm lấy page number
-   * LHNAM (13/7/2022)
    */
   getPageNumber() {
     let me = this;
@@ -673,7 +660,6 @@ class EmployeePage {
 
   /**
    * Hàm nhận event click nút prev và next
-   * LHNAM (14/7/2022)
    */
   setNextPrevNavigationBtn() {
     let me = this;
@@ -693,7 +679,6 @@ class EmployeePage {
 
   /**
    * Hàm trở về trang trước
-   * LHNAM (14/7/2022)
    */
   prev() {
     let me = this;
@@ -707,7 +692,6 @@ class EmployeePage {
 
   /**
    *  Hàm next trang sau
-   * LHNAM (14/7/2022)
    */
   next() {
     let me = this;
@@ -717,7 +701,6 @@ class EmployeePage {
 
   /**
    *  Hàm nhận event click trực tiếp nút ở navigation
-   * LHNAM (14/7/2022)
    */
   setNavigationBtn() {
     let me = this;
@@ -738,7 +721,6 @@ class EmployeePage {
 
   /**
    * Hàm lấy tổng số bản ghi
-   * LHNAM(13/7/2022)
    */
   getTotalCount(totalCount) {
     let me = this;
