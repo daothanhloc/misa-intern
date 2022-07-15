@@ -22,6 +22,7 @@
     <!-- <link rel="stylesheet" href="./../Assets/css/index.css" /> -->
     <link rel="stylesheet" href="../../Assets/css/Employee.css" />
     <link rel="stylesheet" href="../../Assets/style/main.css">
+    <link rel="stylesheet" href="../../Assets/font/fontawesome-5.15.1/css/all.min.css">
     <title>Nhân viên</title>
   </head>
 
@@ -126,8 +127,8 @@
                     </button>
                   </div>
                   <div class="table-option">
-                    <div class="table-option-left">
-                      <div class="input-group rounded" style="width: 900px">
+                    <div class="table-option-left" id="EmployeeFilter">
+                      <div class="input-group rounded" style="width: 900px" >
                         <img
                           src="../../Assets/icon//search.png"
                           alt="search icon"
@@ -140,13 +141,14 @@
                           placeholder="Tìm kiếm theo Mã, Tên hoặc Số điện thoại"
                           aria-label="Search"
                           aria-describedby="search-addon"
+                          Filter="search"
                         />
                       </div>
-                      <select class="custom-select mr-sm-2" SelectID="department-select">
-                        <option value="" disabled selected>Chọn phòng ban</option>
+                      <select class="custom-select mr-sm-2" SelectID="department-select" Filter="department">
+                        <option value="" selected>Chọn phòng ban</option>
                       </select>
-                      <select class="custom-select mr-sm-2" SelectID="position-select">
-                        <option value="" disabled selected>Chọn vị trí</option>
+                      <select class="custom-select mr-sm-2" SelectID="position-select" Filter="position">
+                        <option value="" selected>Chọn vị trí</option>
                       </select>
                     </div>
                     <div class="table-option-right">
@@ -166,7 +168,7 @@
                           height="20"
                         />
                       </button>
-                      <button class="refresh">
+                      <button CommandType="refresh" class="refresh">
                         <img
                           src="../../Assets/icon//refresh.png"
                           alt="refresh icon"
@@ -180,7 +182,6 @@
               id="gridEmployee"
               Toolbar="ToolbarEmployee"
               itemid="EmployeeID"
-              Url="https://localhost:7231/api/v1/Employees?limit=-1&skip=-1&includeDepartment=1&includePosition=1"
               class="table-wrapper"
             >
           
@@ -188,19 +189,19 @@
                 <div class="col" FieldName="employeeCode">Mã nhân viên</div>
                 <div class="col" FieldName="employeeName">Họ và tên</div>
 
-                <div class="col" FieldName="gender">Giới tính</div>
+                <div class="col" FieldName="gender" DataType="Enum" >Giới tính</div>
                 <div class="col" FieldName="dateOfBirth" DataType="Date">
                   Ngày sinh
                 </div>
                 <div class="col" FieldName="phoneNumber">Điện thoại</div>
                 <div class="col" FieldName="email">Email</div>
                 <div class="col" FieldName="positionName">Chức vụ</div>
-                <div class="col" FieldName="deparmentName">Phòng ban</div>
+                <div class="col" FieldName="departmentName">Phòng ban</div>
 
                 <div class="col" FieldName="salary" DataType="Number">
                   Mức lương cơ bản
                 </div>
-                <div class="col" FieldName="workStatus">Tình trạng công việc</div>
+                <div class="col" FieldName="workStatus" DataType="Enum" >Tình trạng công việc</div>
               </div>
             </div>
           </div>

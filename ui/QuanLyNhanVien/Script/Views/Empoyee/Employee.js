@@ -17,7 +17,7 @@ class EmployeePage {
     me.columnConfig = me.getColumnConfig();
 
     // Lấy dữ liệu
-    me.getData();
+    me.getEmployeeData();
     me.getDepartmentData();
     me.getPositionData();
   }
@@ -69,6 +69,8 @@ class EmployeePage {
 
     // Khởi tạo sự kiện cho table
     me.initEventsTable();
+
+    me.initEventsFilter();
   }
 
   /**
@@ -88,6 +90,68 @@ class EmployeePage {
         me[commandType]();
       }
     });
+  }
+
+  /**
+   * Hàm khởi tạo sự kiện cho bộ lọc và tìm kiếm
+   * LHNAM (13/7/2022)
+   */
+  initEventsFilter() {
+    let me = this;
+
+    // Hàm khởi tạo sự kiện tìm kiếm
+    me.searchFilter();
+
+    // Hàm khởi tạo sự kiện bộ lọc vị trí
+    me.positionFilter();
+
+    // Hàm khởi tạo sự kiện bộ lọc phòng ban
+    me.departmentFilter();
+  }
+  /**
+   * Hàm khởi tạo sự kiện tìm kiếm
+   * LHNAM (13/7/2022)
+   */
+  searchFilter() {
+    let me = this;
+    $("#EmployeeFilter")
+      .find("[Filter = 'search']")
+      .on("keypress", function (event) {
+        if (event.key == "Enter") {
+          me.search = $(this).val();
+          me.reloadData();
+        }
+      });
+  }
+
+  /**
+   * Hàm khởi tạo sự kiện bộ lọc vị trí
+   * LHNAM (13/7/2022)
+   */
+  positionFilter() {
+    let me = this;
+    $("#EmployeeFilter")
+      .find("[Filter = 'position']")
+      .on("change", function () {
+        me.positionID = $(this).val();
+
+        me.reloadData();
+      });
+  }
+
+  /**
+   * Hàm khởi tạo sự kiện bộ lọc phòng ban
+   * LHNAM (13/7/2022)
+   */
+  departmentFilter() {
+    let me = this;
+    $("#EmployeeFilter")
+      .find("[Filter = 'department']")
+      .on("change", function () {
+        me.departmentID = $(this).val();
+
+        me.reloadData();
+      });
   }
 
   /**
@@ -165,6 +229,12 @@ class EmployeePage {
     me.getNewEmployeeCode(param);
   }
 
+  refresh() {
+    let me = this;
+    // Lấy lại dữ liệu của employee
+    me.reloadData();
+  }
+
   getNewEmployeeCode(param) {
     let me = this;
     $.ajax({
@@ -185,8 +255,6 @@ class EmployeePage {
     Object.assign(newCode, data);
 
     param.newEmployeeCode = data;
-    console.log("AAAAAA", param);
-
     // kiểm tra có tồn tại form detail
     if (me.formDetail) {
       me.formDetail.open(param);
@@ -236,13 +304,33 @@ class EmployeePage {
   /**
    * Hàm dùng để lấy dữ liệu cho trang
    */
-  getData() {
-    let me = this,
-      url = me.grid.attr("Url");
+  getEmployeeData() {
+    let me = this;
+    if (me.search == null) {
+      me.search = "";
+    }
+    if (me.positionID == null) {
+      me.positionID = "";
+    }
+    if (me.departmentID == null) {
+      me.departmentID = "";
+    }
 
+    if (me.departmentID == null) {
+      me.departmentID = "";
+    }
+
+    if (me.limit == null) {
+      me.limit = -1;
+    }
+    if (me.skip == null) {
+      me.skip = -1;
+    }
+    let url = `${Resource.APIs.Employees}?search=${me.search}&positionID=${me.positionID}&departmentID=${me.departmentID}&includeDepartment=1&includePosition=1&limit=${me.limit}&skip=${me.skip}`;
     CommonFn.Ajax(url, Resource.Method.Get, {}, function (response) {
       if (response) {
         me.loadData(response.employees);
+        // me.getTotalCount(response.totalCount);
       } else {
         console.log("Có lỗi khi lấy dữ liệu từ server");
       }
@@ -267,7 +355,7 @@ class EmployeePage {
    */
   reloadData() {
     let me = this;
-    me.getData();
+    me.getEmployeeData();
     $(".delete").prop("disabled", true);
     $(".duplicate").prop("disabled", true);
   }
@@ -338,7 +426,7 @@ class EmployeePage {
           tr.append(td);
         });
 
-        tr.data("Xuan", item);
+        // tr.data("Xuan", item);
 
         tbody.append(tr);
       });
@@ -359,17 +447,71 @@ class EmployeePage {
 
     switch (dataType) {
       case Resource.DataTypeColumn.Number:
-        value = CommonFn.formatMoney(value);
+        value = CommonFn.formatMoney2(value);
         break;
-      case "Date":
+      case Resource.DataTypeColumn.Date:
+        value = CommonFn.formatDateOutput(value);
         break;
-      case "Enum":
+      case Resource.DataTypeColumn.Enum:
+        switch (fieldName) {
+          case "gender":
+            value = me.setGender(value);
+            break;
+          case "workStatus":
+            value = me.setWorkStatus(value);
+            break;
+        }
         break;
     }
 
     return value;
   }
+  value;
 
+  /**
+   * Hàm để set giá trị cho cột workStatus
+   * LHNAM (12/7/2022)
+   */
+  setWorkStatus(workStatus) {
+    switch (workStatus) {
+      case Enumeration.WorkStatus.NotWork:
+        workStatus = Resource.WorkStatus.NotWork;
+        break;
+
+      case Enumeration.WorkStatus.CurrentlyWorking:
+        workStatus = Resource.WorkStatus.CurrentlyWorking;
+        break;
+
+      case Enumeration.WorkStatus.StopWork:
+        workStatus = Resource.WorkStatus.StopWork;
+        break;
+
+      case Enumeration.WorkStatus.Retired:
+        workStatus = Resource.WorkStatus.Retired;
+        break;
+    }
+
+    return workStatus;
+  }
+
+  /**
+   * Hàm để set giá trị cho cột giới tính
+   * LHNAM(3/7/2022)
+   */
+  setGender(gender) {
+    switch (gender) {
+      case Enumeration.Gender.Female:
+        gender = Resource.Gender.Female;
+        break;
+      case Enumeration.Gender.Male:
+        gender = Resource.Gender.Male;
+        break;
+      case Enumeration.Gender.Other:
+        gender = Resource.Gender.Other;
+        break;
+    }
+    return gender;
+  }
   /**
    * Hàm dùng để lấy class format cho từng kiểu dữ liệu
    * CreatedBy: NTXUAN 06.05.2021

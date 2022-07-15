@@ -5,104 +5,104 @@
 /* import folder layout */
 
 @font-face {
-    font-family: GoogleSans-Regular;
-    src: url(../assets/font/GoogleSans-Regular.otf);
+  font-family: GoogleSans-Regular;
+  src: url(../font/GoogleSans-Regular.otf);
 }
 
 @font-face {
-    font-family: GoogleSans-Bold;
-    src: url(../assets/font/GoogleSans-Bold.otf);
+  font-family: GoogleSans-Bold;
+  src: url(../font/GoogleSans-Bold.otf);
 }
 
 @font-face {
-    font-family: GoogleSans-Italic;
-    src: url(../assets/font/GoogleSans-Italic.otf);
+  font-family: GoogleSans-Italic;
+  src: url(../font/GoogleSans-Italic.otf);
 }
 
 @font-face {
-    font-family: GoogleSans-Medium;
-    src: url(../assets/font/GoogleSans-Medium.otf);
+  font-family: GoogleSans-Medium;
+  src: url(../font/GoogleSans-Medium.otf);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: GoogleSans-Regular;
-    font-size: 13px;
-    color: #454545;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: GoogleSans-Regular;
+  font-size: 13px;
+  color: #454545;
 }
 
 .heading {
-    font-family: GoogleSans-Bold;
-    font-size: 24px;
-    color: #000;
+  font-family: GoogleSans-Bold;
+  font-size: 24px;
+  color: #000;
 }
 
 .title {
-    font-family: GoogleSans-Bold;
-    font-size: 20px;
-    color: #000;
+  font-family: GoogleSans-Bold;
+  font-size: 20px;
+  color: #000;
 }
 
 .title2 {
-    font-family: GoogleSans-Bold;
-    font-size: 15px;
-    color: #000;
+  font-family: GoogleSans-Bold;
+  font-size: 15px;
+  color: #000;
 }
 
 .label_field_input {
-    font-family: GoogleSans-Medium;
-    font-size: 13px;
-    color: #000;
+  font-family: GoogleSans-Medium;
+  font-size: 13px;
+  color: #000;
 }
 
 .label {
-    font-family: GoogleSans-Regular;
-    font-size: 13px;
-    color: #454545;
+  font-family: GoogleSans-Regular;
+  font-size: 13px;
+  color: #454545;
 }
 
 .content_detail {
-    font-family: GoogleSans-Medium;
-    font-size: 13px;
-    color: #000;
+  font-family: GoogleSans-Medium;
+  font-size: 13px;
+  color: #000;
 }
 
 .sub-text {
-    font-family: GoogleSans-Regular;
-    font-size: 11px;
-    color: #bbbbbb;
+  font-family: GoogleSans-Regular;
+  font-size: 11px;
+  color: #bbbbbb;
 }
 
 .fas {
-    color: #000;
+  color: #000;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 input::placeholder {
-    font-family: GoogleSans-Regular;
-    font-size: 11px;
-    color: #bbbbbb;
+  font-family: GoogleSans-Regular;
+  font-size: 11px;
+  color: #bbbbbb;
 }
 
 .img {
-    background-repeat: no-repeat;
-    background-size: contain;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.green-row{
-    background-color: #2fbe8e!important;
-    color: #fff;
+.green-row {
+  background-color: #2fbe8e !important;
+  color: #fff;
 }
 
-.green-row .col{
-    color: #fff;
+.green-row .col {
+  color: #fff;
 }
 
-.require-control{
-    border: 1px solid #ff4747;
+.require-control {
+  border: 1px solid #ff4747;
 }

@@ -1,11 +1,7 @@
 class EmployeeDetail {
   constructor(formId) {
     let me = this;
-
     me.form = $(`#${formId}`);
-
-    console.log("confirm-form", me.form);
-
     // khởi tạo sự kiện cho form
     me.initEvents();
   }
@@ -188,8 +184,6 @@ class EmployeeDetail {
    */
   getResult(res) {
     let me = this;
-
-    console.log(res);
     me.form.addClass("hide");
     me.parent.reloadData();
   }
@@ -239,10 +233,7 @@ class EmployeeDetail {
 
   open(param) {
     let me = this;
-    console.log("param", param);
-
     Object.assign(me, param);
-
     //Nếu ở mode thì reset form
     if (param) {
       switch (param.formMode) {
