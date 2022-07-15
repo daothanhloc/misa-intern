@@ -5,7 +5,7 @@
 }
 
 table {
-  width: 1005px;
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -51,8 +51,6 @@ th {
 .sidebar {
   width: 250px;
   height: 100%;
-  border: 1px solid;
-  /* background: yellow; */
 }
 
 .wrapper-body {
