@@ -262,12 +262,12 @@ namespace MISA.WebDev2022.Api.Controllers
                 string getEmployeeCommand = "SELECT * FROM Employees ";
                 if(includeDepartment == 1)
                 {
-                    getEmployeeCommand += " JOIN Departments ON Departments.DepartmentID = Employees.DepartmentID ";
+                    getEmployeeCommand += " LEFT JOIN Departments ON Departments.DepartmentID = Employees.DepartmentID ";
 
                 }
                 if(includePosition == 1)
                 {
-                    getEmployeeCommand += " JOIN Positions ON Positions.PositionId = Employees.PositionId ";
+                    getEmployeeCommand += " LEFT JOIN Positions ON Positions.PositionId = Employees.PositionId ";
                 }
 
                 var whereConditions = new List<string>();

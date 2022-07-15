@@ -71,6 +71,36 @@ class EmployeePage {
     me.initEventsTable();
 
     me.initEventsFilter();
+
+    me.initEventsNavigation();
+  }
+
+  /**
+   * Hàm khởi tạo sự kiện cho navigation
+   */
+  initEventsNavigation() {
+    let me = this;
+
+    me.pageSize = $("input[SetField = 'pageSize']").val();
+    me.pageNumber = 1;
+    console.log(me.pageSize);
+
+    $("input[SetField = 'pageSize']").on("keypress", function (event) {
+      if (event.key == "Enter") {
+        let value = $("input[SetField = 'pageSize']").val();
+        if (20 > value) {
+          value = 20;
+        }
+        if (value > 200) {
+          value = 200;
+        }
+        $("input[SetField = 'pageSize']").val(value);
+
+        me.pageSize = value;
+        me.pageNumber = 1;
+        me.reloadData();
+      }
+    });
   }
 
   /**
@@ -306,6 +336,9 @@ class EmployeePage {
    */
   getEmployeeData() {
     let me = this;
+    console.log("getEmployeeData", me.pageSize, me.pageNumber);
+    me.limit = me.pageSize;
+    me.skip = (me.pageNumber - 1 > 0 ? me.pageNumber - 1 : 0) * me.pageSize;
     if (me.search == null) {
       me.search = "";
     }
@@ -330,7 +363,7 @@ class EmployeePage {
     CommonFn.Ajax(url, Resource.Method.Get, {}, function (response) {
       if (response) {
         me.loadData(response.employees);
-        // me.getTotalCount(response.totalCount);
+        me.getTotalCount(response.totalCount);
       } else {
         console.log("Có lỗi khi lấy dữ liệu từ server");
       }
@@ -585,6 +618,143 @@ class EmployeePage {
         `<option value="${item.departmentID}">${item.departmentName}</option>`
       );
     });
+  }
+
+  /**
+   * Hàm Render phân trang
+   */
+  renderNavigation(totalCount) {
+    let me = this,
+      navigationPages = $(".pagination");
+
+    me.pageTotalNumber = parseInt(totalCount / me.pageSize);
+    console.log(me.pageTotalNumber);
+
+    if (totalCount % me.pageSize > 0) {
+      me.pageTotalNumber++;
+    }
+    navigationPages.html("");
+    let prev = $(
+      '<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only"></span></a></li>'
+    );
+    prev.attr("NavigationField", "prev");
+    navigationPages.append(prev);
+    for (let i = 1; i <= me.pageTotalNumber; i++) {
+      let page =
+        i == me.pageNumber
+          ? $('<li class="page-item page-link nav-green"></li>')
+          : $('<li class="page-item page-link"></li>');
+      page.attr("PageNumber", i);
+      page.addClass("page");
+      page.text(i);
+      navigationPages.append(page);
+    }
+
+    let next = $(
+      '<li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span><span class="sr-only"></span></a></li>'
+    );
+    next.attr("NavigationField", "next");
+    navigationPages.append(next);
+
+    me.getPageNumber();
+  }
+
+  /**
+   * Hàm lấy page number
+   * LHNAM (13/7/2022)
+   */
+  getPageNumber() {
+    let me = this;
+
+    me.setNavigationBtn();
+
+    me.setNextPrevNavigationBtn();
+  }
+
+  /**
+   * Hàm nhận event click nút prev và next
+   * LHNAM (14/7/2022)
+   */
+  setNextPrevNavigationBtn() {
+    let me = this;
+
+    $(".pagination").find("[NavigationField]").off("click");
+    $(".pagination")
+      .find("[NavigationField]")
+      .on("click", function () {
+        let field = $(this).attr("NavigationField");
+
+        // Gọi đến hàm động
+        if (me[field] && typeof me[field] == "function") {
+          me[field]();
+        }
+      });
+  }
+
+  /**
+   * Hàm trở về trang trước
+   * LHNAM (14/7/2022)
+   */
+  prev() {
+    let me = this;
+
+    if (me.pageNumber <= 1) {
+      return;
+    }
+    me.pageNumber--;
+    me.reloadData();
+  }
+
+  /**
+   *  Hàm next trang sau
+   * LHNAM (14/7/2022)
+   */
+  next() {
+    let me = this;
+    me.pageNumber++;
+    me.reloadData();
+  }
+
+  /**
+   *  Hàm nhận event click trực tiếp nút ở navigation
+   * LHNAM (14/7/2022)
+   */
+  setNavigationBtn() {
+    let me = this;
+
+    $(".pagination").find("[PageNumber]").off("click");
+    $(".pagination")
+      .find("[PageNumber]")
+      .on("click", function () {
+        console.log("click");
+        $(".pagination").find(".nav-green").removeClass("nav-green");
+        $(this).addClass("nav-green");
+        me.pageNumber = $(this).attr("PageNumber");
+        console.log(me.pageNumber);
+
+        me.reloadData();
+      });
+  }
+
+  /**
+   * Hàm lấy tổng số bản ghi
+   * LHNAM(13/7/2022)
+   */
+  getTotalCount(totalCount) {
+    let me = this;
+
+    let fisrtData = me.pageSize * (me.pageNumber - 1) + 1,
+      finalData = me.pageSize * me.pageNumber;
+
+    if (finalData > totalCount) {
+      finalData = totalCount;
+    }
+    let pageInfo = fisrtData + "-" + finalData + "/";
+
+    $("span[SetField = 'pageInfo']").text(pageInfo);
+    $("span[SetField = 'totalCount']").text(totalCount);
+
+    me.renderNavigation(totalCount);
   }
 }
 

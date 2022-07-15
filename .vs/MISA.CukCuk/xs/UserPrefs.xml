@@ -1,19 +1,19 @@
 ﻿<Properties StartupConfiguration="{C6E0CC33-F53D-4467-94A1-CAD5348AF194}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MISA.CukCuk.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MISA.CukCuk.Api/Controllers/EmployeesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../usr/local/share/dotnet/sdk/6.0.302/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets">
     <Files>
-      <File FileName="MISA.CukCuk.Api/Controllers/DepartmentsController.cs" Line="32" Column="24" />
-      <File FileName="MISA.CukCuk.Api/Controllers/EmployeesController.cs" Line="246" Column="41" />
-      <File FileName="MISA.CukCuk.Api/Entities/Employee.cs" Line="123" Column="1" />
-      <File FileName="MISA.CukCuk.Api/Controllers/PositionsController.cs" Line="26" Column="50" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/6.0.302/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" Line="268" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="MISA.CukCuk" expanded="True">
+          <Node name="MISA.CukCuk" expanded="True" selected="True">
             <Node name="MISA.CukCuk.Api" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="Entities" expanded="True" />
               <Node name="Enums" expanded="True" />
@@ -27,8 +27,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

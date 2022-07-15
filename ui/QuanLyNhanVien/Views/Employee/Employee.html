@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Các file theo từng màn hình -->
-    <link rel="stylesheet" href="../../Assets/test.css" />
+    <link rel="stylesheet" href="../../Assets/style.css" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -19,7 +19,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <!-- <link rel="stylesheet" href="./../Assets/css/index.css" /> -->
     <link rel="stylesheet" href="../../Assets/css/Employee.css" />
     <link rel="stylesheet" href="../../Assets/style/main.css">
     <link rel="stylesheet" href="../../Assets/font/fontawesome-5.15.1/css/all.min.css">
@@ -208,29 +207,19 @@
               </table>
             </div>
             <div class="table-footer">
-              <span>Hiển thị 1-10/1000 nhân viên</span>
+              <span>Hiển thị 
+                <span SetField="pageInfo" class="title2" style="font-size: 13px;">01-20/</span>
+                <span SetField="totalCount" class="title2" style="font-size: 13px;">123</span>
+                lao động</span>
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only"></span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only"></span>
-                    </a>
-                  </li>
+                  
                 </ul>
               </nav>
-              <span>10 nhân viên/trang</span>
+              <div class="page-size">
+                <input SetField="pageSize" type="number" min="20" max="200" value="20">
+                <span>nhân viên/trang</span>
+            </div>
             </div>
           </div>
         </div>
@@ -238,9 +227,7 @@
       
     </div>
 
-
-    
-
+    <!-- Modal Add Employee -->
     <div class="sub-container hide" id="EmployeeDetail">
         <div class="form">
             <div class="form__header heading">THÔNG TIN NHÂN VIÊN</div>

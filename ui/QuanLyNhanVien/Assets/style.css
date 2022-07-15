@@ -67,3 +67,7 @@ th {
 .wrapper {
   height: 100vh;
 }
+
+.nav-green {
+  background-color: green !important;
+}
